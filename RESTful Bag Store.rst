@@ -13,7 +13,8 @@ Controversial Points
 
 * Bag are imutable - alternatively, do we create ``versions`` resource instead
   of ``contents``?
-* Implementations MUST support JSON, MAY support XML
+* Implementations MUST support JSON representations of resources, MAY support
+  XML and other formats
 
 
 Design
@@ -80,8 +81,11 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
         Arbitrary additional metadata files stored in Java-style reversed
         domain prefixed files
 
-        GET returns a simple file list, allowing clients to decide whether
-        they wish to retrieve a file
+        GET returns a simple file list (Atom feed?), allowing clients to
+        decide whether they wish to retrieve a file
+
+        The server promised only that the metadata files will be preserved
+        with the same level of durability as the bag contents
 
         Example::
 
