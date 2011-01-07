@@ -135,3 +135,16 @@ Proposal 2
 
     These semantics support the use of Git or Mercurial as storage backends
     for frequently changing content.
+
+Good HTTP Citizenship
+~~~~~~~~~~~~~~~~~~~~~
+
+* Servers *SHOULD* generate Cache-Control headers; clients *MUST* honor them
+* Servers *MAY* use HTTP redirects to direct clients to HTTP-accessible
+  backend storage for performance reasons
+* If available, servers *SHOULD* return ``Content-MD5`` or ``Content-SHA1``
+  headers using the hash value from the manifest
+* Servers *SHOULD* support entity tags and ``If-None-Match``
+* Servers *SHOULD* support HTTP Range to allow clients to resume transfers
+* Clients *SHOULD* honor HTTP 500.13 Server Busy responses using exponential
+  back-off
