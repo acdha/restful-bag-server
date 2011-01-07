@@ -5,13 +5,13 @@ Basic Features
 --------------
 
 * Pure HTTP
-* Does not address authentication: use HTTP auth if needed
+* Does not address authentication beyond standard HTTP
 * Does not require an intelligent server (Apache 1.0 could work)
 
 Controversial Points
 --------------------
 
-* Bag are imutable - alternatively, do we create ``versions`` resource instead
+* Bag are immutable - alternatively, do we create ``versions`` resource instead
   of ``contents``?
 * Implementations MUST support JSON representations of resources, MAY support
   XML and other formats
@@ -92,6 +92,7 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
             [
                 'gov.loc.exampleProject.backup_history.xml',
                 'com.flickr.commons.userComments.json',
+                'org.apache.tika.extractedMetadata.xml'
             ]
 
 
@@ -111,7 +112,7 @@ Proposal 2
 
     Explicit versioning: the manifest and contents move under a new
     version/_hash_/ structure, with convenience ``version/latest`` which is
-    either the only bag (on servers which promise imutability) or the latest
+    either the only bag (on servers which promise immutability) or the latest
     version as determined by the server.
 
     Arbitrary symbolic names may be allowed but MUST redirect to the
