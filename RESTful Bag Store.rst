@@ -36,6 +36,16 @@ Structure
 :/bags/:
     Resource listing available bags
 
+Clients may PUT to /bags/*BAG_ID*/ to perform several operations:
+    :commit:
+        Complete an upload (see "Creating a bag" below)
+
+        Servers *MUST* not include a bag in any public listings until the bag
+        has been committed.
+
+    :validate:
+        Request that the server validate the bag contents against the manifest
+
 Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
     :copies:
