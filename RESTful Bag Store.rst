@@ -43,18 +43,18 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
         TODO: Specify rel types for instances
 
-    ``notes``
+    :notes:
         Atom feed containing comments from curators
 
         TODO: Should this be history?
 
-    ``manifest``
+    :manifest:
         Resource enumerating bag contents as hashes with several keys:
 
-        ``path``
+        :path:
             The file's full path relative to the bag root, i.e. ``data/foobar.tiff``
 
-        ``checksum``
+        :checksum:
             hash of encoded checksum values using the algorithm as the key
 
         Example::
@@ -69,10 +69,10 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
                 }
             ]
 
-    ``contents``
+    :contents:
         Direct access to bag contents
 
-    ``metadata``
+    :metadata:
         Arbitrary additional metadata files stored in Java-style reversed
         domain prefixed files
 
