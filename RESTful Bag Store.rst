@@ -6,6 +6,7 @@ Basic Features
 
 * Pure HTTP
 * Does not address authentication: use HTTP auth if needed
+* Does not require an intelligent server (Apache 1.0 could work)
 
 Controversial Points
 --------------------
@@ -20,6 +21,10 @@ Design
 
 This describes the public interface of an endpoint, which could be an entire
 service or a project-specific subdirectory on generic content storage system.
+
+The structure intentionally does not require any server support for the common
+case of providing access to bag contents, allowing a read-only store to be as
+simple as a correctly-structured webroot directory on a standard web server.
 
 Structure
 ~~~~~~~~~
