@@ -93,3 +93,34 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
                 'gov.loc.exampleProject.backup_history.xml',
                 'com.flickr.commons.userComments.json',
             ]
+
+
+Versioning
+~~~~~~~~~~
+
+This is a major point of discussion: simply allowing bag contents to change
+will substantially complicate the replication process and makes it challenging
+to determine whether your copy is the same as an arbitrary remote copy.
+
+Proposal 1
+
+    Don't. Bags are changed by creating a copy with a new ID and, optionally,
+    publishing a link to your copy with explanatory metadata.
+
+Proposal 2
+
+    Explicit versioning: the manifest and contents move under a new
+    version/_hash_/ structure, with convenience ``version/latest`` which is
+    either the only bag (on servers which promise imutability) or the latest
+    version as determined by the server.
+
+    Arbitrary symbolic names may be allowed but MUST redirect to the
+    appropriate hash value.
+
+    In either case, the server MUST ensure that any addition, modification or
+    deletion to the bag contents, including the top-level tag files, will
+    result in a new hash being calculated. Metadata files are not versioned
+    to avoid local additions breaking replication.
+
+    These semantics support the use of Git or Mercurial as storage backends
+    for frequently changing content.
