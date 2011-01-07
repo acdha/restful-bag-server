@@ -29,16 +29,15 @@ simple as a correctly-structured webroot directory on a standard web server.
 Structure
 ~~~~~~~~~
 
-
-``/changes``
+:/changes:
     Atom feed listing new bags
 
-``/bags/``
+:/bags/:
     Resource listing available bags
 
 Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
-    ``copies``
+    :copies:
         Atom feed listing alternate locations for this bag by URL
 
         TODO: specify format
