@@ -148,3 +148,46 @@ Good HTTP Citizenship
 * Servers *SHOULD* support HTTP Range to allow clients to resume transfers
 * Clients *SHOULD* honor HTTP 500.13 Server Busy responses using exponential
   back-off
+
+Operations
+~~~~~~~~~~
+
+For this discussion, it is assumed that servers may return standard HTTP
+response code such as 401/403 to indicate that the client needs to
+authenticate or lacks permissions to make changes.
+
+Creating a new bag
+^^^^^^^^^^^^^^^^^^
+
+    #. Create the container:
+        Client POSTs to ``/bags`` with the ID
+        Server returns 301 pointing to the new bag's location
+
+        Servers must return 409 Conflict if the ID is already in use
+
+    #. Client PUTs ``bagit.txt`` and ``bag-info.txt``
+
+    #. Client PUTs one or more manifest files under ``/contents/``
+
+        Clients *MUST* provide the manifest files before uploading data
+
+    #. Client PUTs data files under ``contents/data/``
+
+        Servers *MUST* return HTTP 400 if the file is not listed in the
+        manifest or the received contents fail checksum validation
+
+    #. Client POSTs ``commit`` to the bag location
+
+Deleting a bag
+^^^^^^^^^^^^^^
+
+    #. Client DELETEs bag location
+
+Replicating a bag
+^^^^^^^^^^^^^^^^^
+
+    #. Client GETs ``manifest``
+    #. Client GETs each listed content file
+    #. Optionally, client performs an AtomPub POST to ``copies`` with the
+       public URL of a copy conforming to this specification.
+
