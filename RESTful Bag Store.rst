@@ -41,8 +41,8 @@ following metadata:
 
     :links:
         List of links to other resources on this server (see below) using the
-        following format, as in HTML ``link`` tags (see
-        http://www.w3.org/TR/html401/struct/links.html#h-12.3):
+        following format, as in HTML ``link`` tags (see `RFC 5988
+        <http://tools.ietf.org/html/rfc5988>`_ for valid rel values).
 
         :rel:
             forward link types
@@ -186,7 +186,8 @@ Creating a new bag
 
     #. Create the container:
         Client POSTs to ``/bags`` with the ID
-        Server returns 301 pointing to the new bag's location
+
+        Server returns 201 pointing to the new bag's location
 
         Servers must return 409 Conflict if the ID is already in use
 
