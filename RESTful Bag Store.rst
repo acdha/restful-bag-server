@@ -42,7 +42,7 @@ following metadata:
 :links:
     List of links to other resources on this server (see below) using the
     following format, as in HTML ``link`` tags (see `RFC 5988
-    <http://tools.ietf.org/html/rfc5988>` for valid rel values). 
+    <http://tools.ietf.org/html/rfc5988>`_ for valid rel values). 
 
     :rel:
         forward link types
