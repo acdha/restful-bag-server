@@ -85,7 +85,9 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
             ]
 
     :contents:
-        Direct access to bag contents
+        Root for access to bag contents: for any file path in the manifest,
+        ``/bags/`` <*BAG_ID*> ``/contents/`` <*BAG_ID*> will return the raw
+        file.
 
     :metadata:
         Arbitrary additional metadata files stored in Java-style reversed
