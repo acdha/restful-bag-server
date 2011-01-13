@@ -143,7 +143,8 @@ Good HTTP Citizenship
 * Servers *MAY* use HTTP redirects to direct clients to HTTP-accessible
   backend storage for performance reasons
 * If available, servers *SHOULD* return ``Content-MD5`` or ``Content-SHA1``
-  headers using the hash value from the manifest
+  headers using the hash value from the manifest; clients *SHOULD* validate
+  these values if present
 * Servers *SHOULD* support entity tags and ``If-None-Match``
 * Servers *SHOULD* support HTTP Range to allow clients to resume transfers
 * Clients *SHOULD* honor HTTP 500.13 Server Busy responses using exponential
