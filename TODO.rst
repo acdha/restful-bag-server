@@ -1,6 +1,7 @@
 TODO List
 =========
 
+* Consider JSON-C instead of Atom to avoid any XML requirements
 * Full use cases for:
     * Mirroring content
     * Using PuSH to avoid polling
