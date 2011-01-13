@@ -36,7 +36,7 @@ Structure
 :/bags/:
     Resource listing available bags
 
-Clients may PUT to /bags/*BAG_ID*/ to perform several operations:
+Clients may POST to ``/bags/`` <*BAG_ID*> ``/`` to perform several operations:
     :commit:
         Complete an upload (see "Creating a bag" below)
 
@@ -191,4 +191,26 @@ Replicating a bag
     #. Client GETs each listed content file
     #. Optionally, client performs an AtomPub POST to ``copies`` with the
        public URL of a copy conforming to this specification.
+
+Requesting Server Validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    #. Client POSTs operation=validate to ``/bags/`` <*BAG_ID*>
+    #. Server returns HTTP 202 Accepted and an initial status resource with
+       the following attributes:
+
+       :uri:
+           Unique URI which the client can GET to retrieve the current
+           status
+
+       :status:
+           One of ``In Progress``, ``Failed``, or ``Successful``
+
+       :progress:
+           Integer percentage or null if the server does not support
+           partial status
+
+       :message:
+           Human-readable summary message, which may only be available
+           when the operation has completed
 

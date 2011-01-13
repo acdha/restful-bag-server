@@ -2,10 +2,7 @@ TODO List
 =========
 
 * Full use cases for:
-    * Adding a bag
-    * Deleting a bag
     * Mirroring content
-    * Performing a validation request
     * Using PuSH to avoid polling
 * Add an example static endpoint
 * Convert to proper standards-ese
