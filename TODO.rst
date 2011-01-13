@@ -1,6 +1,10 @@
 TODO List
 =========
 
+* commit and validate URIs have kind of an RPC smell about them, can they be 
+  expressed more RESTfully? 
+* recommend rel values for links to bags, and component resources that may
+  be present: copies, notes, manifest, contents, metadata, etc?
 * Consider JSON-C instead of Atom to avoid any XML requirements
 * Full use cases for:
     * Mirroring content
