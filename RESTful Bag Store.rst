@@ -39,25 +39,26 @@ Structure
 GETing ``/bags/`` <*BAG_ID*> ``/`` will return a response containing the
 following metadata:
 
-:links:
-    List of links to other resources on this server (see below) using the
-    following format, as in HTML ``link`` tags (see
-    http://www.w3.org/TR/html401/struct/links.html#h-12.3):
+    :links:
+        List of links to other resources on this server (see below) using the
+        following format, as in HTML ``link`` tags (see
+        http://www.w3.org/TR/html401/struct/links.html#h-12.3):
 
-    :rel:
-        forward link types
-    :href:
-        URI for linked resource
-    :type:
-        advisory content type
+        :rel:
+            forward link types
+        :href:
+            URI for linked resource
+        :type:
+            advisory content type
 
-:info:
-    Parsed dictionary from ``bag-info.txt``
+    :info:
+        Parsed dictionary from ``bag-info.txt``
 
-:bagit:
-    Parsed dictionary from ``bagit.txt``
+    :bagit:
+        Parsed dictionary from ``bagit.txt``
 
 Clients may POST to ``/bags/`` <*BAG_ID*> ``/`` to perform several operations:
+
     :commit:
         Complete an upload (see "Creating a bag" below)
 
