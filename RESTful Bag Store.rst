@@ -30,10 +30,14 @@ Controversial Points
 
 * Bags are immutable - alternatively, do we create ``versions`` resource instead
   of ``contents``?
-  * Adding versioning semantics adds complexity to the bag store service.  The
-    question is whether it's worth it.  Hard to address w/o use cases.  My hunch
-    is that bags should be mutable with versioning enabled (using e.g. git
-    behind the scenes, like PSU is doing via GitPython with its "repository").
+
+    :mjgiarlo:
+        Adding versioning semantics adds complexity to the bag store service.
+        The question is whether it's worth it. Hard to address w/o use cases. My
+        hunch is that bags should be mutable with versioning enabled (using e.g.
+        git behind the scenes, like PSU is doing via GitPython with its
+        "repository").
+
 * Implementations MUST support JSON representations of resources, MAY support
   XML and other formats
 
