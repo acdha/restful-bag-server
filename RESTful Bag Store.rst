@@ -1,21 +1,14 @@
 RESTful Bag Store
 =================
 
-Basic Features
---------------
+Use Cases
+---------
 
-* Pure HTTP
-* Does not address authentication beyond standard HTTP
-* Does not require an intelligent server (Apache 1.0 could work)
+TODO.  
 
-Controversial Points
---------------------
-
-* Bag are immutable - alternatively, do we create ``versions`` resource instead
-  of ``contents``?
-* Implementations MUST support JSON representations of resources, MAY support
-  XML and other formats
-
+IMO, fleshing these out is crucial to moving forward with this work.
+Otherwise, what are we designing towards?  Is it clear we're all working
+towards the same goals?  etc. 
 
 Design
 ------
@@ -27,11 +20,32 @@ The structure intentionally does not require any server support for the common
 case of providing access to bag contents, allowing a read-only store to be as
 simple as a correctly-structured webroot directory on a standard web server.
 
+Basic Features
+--------------
+
+* Pure HTTP
+* Does not address authentication beyond standard HTTP
+* Does not require an intelligent server (Apache 1.0 could work)
+
+Controversial Points
+--------------------
+
+* Bags are immutable - alternatively, do we create ``versions`` resource instead
+  of ``contents``?
+  * Adding versioning semantics adds complexity to the bag store service.  The
+    question is whether it's worth it.  Hard to address w/o use cases.  My hunch
+    is that bags should be mutable with versioning enabled (using e.g. git 
+    behind the scenes, like PSU is doing via GitPython with its "repository").
+* Implementations MUST support JSON representations of resources, MAY support
+  XML and other formats
+
+
 Structure
 ~~~~~~~~~
 
 :/changes:
-    Atom feed listing new bags
+    Feed listing new bags (should the feed list only new bags, or also e.g.
+    deleted and modified bags?)
 
 :/bags/:
     Resource listing available bags
@@ -71,7 +85,7 @@ Clients may POST to ``/bags/`` <*BAG_ID*> ``/`` to perform several operations:
 Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
     :copies:
-        Atom feed listing alternate locations for this bag by URL
+        Feed listing alternate locations for this bag by URL
 
         TODO: specify format
 
@@ -81,7 +95,7 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
         TODO: Specify rel types for instances
 
     :notes:
-        Atom feed containing comments from curators
+        Feed containing comments from curators
 
         TODO: Should this be history?
 
@@ -189,7 +203,7 @@ Creating a new bag
 
         Server returns 201 pointing to the new bag's location
 
-        Servers must return 409 Conflict if the ID is already in use
+        Servers *MUST* return 409 Conflict if the ID is already in use
 
     #. Client PUTs ``bagit.txt`` and ``bag-info.txt``
 
@@ -212,6 +226,8 @@ Deleting a bag
 Replicating a bag
 ^^^^^^^^^^^^^^^^^
 
+    #. (Is the notion here that the Client will create its own bagit.txt
+       and bag-info.txt?  Or should Client GET those as well?)
     #. Client GETs ``manifest``
     #. Client GETs each listed content file
     #. Optionally, client performs an AtomPub POST to ``copies`` with the
