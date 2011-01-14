@@ -4,11 +4,9 @@ RESTful Bag Store
 Use Cases
 ---------
 
-TODO.  
-
-IMO, fleshing these out is crucial to moving forward with this work.
-Otherwise, what are we designing towards?  Is it clear we're all working
-towards the same goals?  etc. 
+TODO: fleshing out use cases is crucial to moving forward with this work.
+    Otherwise, what are we designing towards?  Is it clear we're all working
+    towards the same goals?  etc.
 
 Design
 ------
@@ -34,7 +32,7 @@ Controversial Points
   of ``contents``?
   * Adding versioning semantics adds complexity to the bag store service.  The
     question is whether it's worth it.  Hard to address w/o use cases.  My hunch
-    is that bags should be mutable with versioning enabled (using e.g. git 
+    is that bags should be mutable with versioning enabled (using e.g. git
     behind the scenes, like PSU is doing via GitPython with its "repository").
 * Implementations MUST support JSON representations of resources, MAY support
   XML and other formats
@@ -226,8 +224,6 @@ Deleting a bag
 Replicating a bag
 ^^^^^^^^^^^^^^^^^
 
-    #. (Is the notion here that the Client will create its own bagit.txt
-       and bag-info.txt?  Or should Client GET those as well?)
     #. Client GETs ``manifest``
     #. Client GETs each listed content file
     #. Optionally, client performs an AtomPub POST to ``copies`` with the
