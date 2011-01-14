@@ -50,7 +50,27 @@ Structure
     deleted and modified bags?)
 
 :/bags/:
-    Resource listing available bags
+    Resource listing available bags.
+
+    Responses are returned with pagination:
+
+        :pagination:
+            :offset:
+                Offset into the list of bags
+            :limit:
+                Limit on the number of results
+            :total_count:
+                Total number of bags
+            :next:
+                Link to the next page of results, if available
+            :previous:
+                Link to the previous page of results, if available
+        :objects:
+            List of bags in the following format:
+                :href:
+                    Location of the bag
+                :id:
+                    User-assigned bag ID
 
 GETing ``/bags/`` <*BAG_ID*> ``/`` will return a response containing the
 following metadata:
