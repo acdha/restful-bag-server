@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Bag Changes</title>
+    <link href="http://example.org/feed/" rel="self"/>
+    <id>urn:uuid:c99bacb8-650d-4322-a1ae-c4feec7900d</id>
+    <updated>2011-01-14T12:34:56.789Z</updated>
+    <entry>
+        <title>bag1</title>
+        <link href="http://example.edu/bags/bag1"/>
+        <id>urn:uuid:ac03fa73-beb5-4a17-a4d4-f2348cfc853f</id>
+        <updated>2011-01-14T12:34:56.789Z</updated>
+    </entry>
+</feed>

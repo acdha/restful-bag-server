@@ -1,0 +1,4 @@
+Options Indexes MultiViews
+DirectoryIndex index
+
+AddType application/json .json
