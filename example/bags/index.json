@@ -1,0 +1,13 @@
+{
+    "objects": [
+        {
+            "href": "bag1",
+            "id": "bag1"
+        }
+    ],
+    "pagination": {
+        "limit": 500,
+        "offset": 0,
+        "total_count": 1
+    }
+}

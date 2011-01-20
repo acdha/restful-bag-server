@@ -101,7 +101,27 @@ Structure
     deleted and modified bags?)
 
 :/bags/:
-    Resource listing available bags
+    Resource listing available bags.
+
+    Responses are returned with pagination:
+
+        :pagination:
+            :offset:
+                Offset into the list of bags
+            :limit:
+                Limit on the number of results
+            :total_count:
+                Total number of bags
+            :next:
+                Link to the next page of results, if available
+            :previous:
+                Link to the previous page of results, if available
+        :objects:
+            List of bags in the following format:
+                :href:
+                    Location of the bag
+                :id:
+                    User-assigned bag ID
 
 GETing ``/bags/`` <*BAG_ID*> ``/`` will return a response containing the
 following metadata:
@@ -153,25 +173,52 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
         TODO: Should this be history?
 
     :manifest:
-        Resource enumerating bag contents as hashes with several keys:
+        Resource enumerating bag contents. This is a dictionary with two keys:
+
+        :tag:
+            List of tag files as defined in the BagIt specification section
+            1.3 (Terminology)
+
+        :payload:
+            List of payload files as defined in the BagIt specification
+            section 1.3 (Terminology)
+
+        Each list contains dictionaries with the following structure:
 
         :path:
             The file's full path relative to the bag root, i.e. ``data/foobar.tiff``
 
         :checksum:
-            hash of encoded checksum values using the algorithm as the key
+            Dictionary of encoded checksum values using the algorithm as the
+            key. This is optional for tag files.
 
         Example::
 
-            [
-                {
-                    "path": "data/path/to/example.pdf",
-                    "checksum": {
-                        "md5": "00fcbdf37a87dced7b969386efe6e132",
-                        "sha1": "74a272487eb513f2fb3984f2a7028871fcfb069b"
+            {
+                "payload": [
+                    {
+                        "checksum": {
+                            "md5": "00fcbdf37a87dced7b969386efe6e132",
+                            "sha1": "74a272487eb513f2fb3984f2a7028871fcfb069b"
+                        },
+                        "path": "data/path/to/example.pdf"
                     }
-                }
-            ]
+                ],
+                "tag": [
+                    {
+                        "path": "bagit.txt"
+                    },
+                    {
+                        "path": "bag-info.txt"
+                    },
+                    {
+                        "path": "manifest-md5.txt"
+                    },
+                    {
+                        "path": "manifest-sha1.txt"
+                    }
+                ]
+            }
 
     :contents:
         Root for access to bag contents: for any file path in the manifest,
