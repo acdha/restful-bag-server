@@ -1,12 +1,69 @@
 RESTful Bag Store
 =================
 
+Overview
+--------
+
+This document briefly describes an approach to making `BagIt
+<http://en.wikipedia.org/wiki/BagIt>`_ style containers of content available
+on the Web so that content can be easily discovered, retrieved and otherwise
+annotated. BagIt style directories, or Bags, are a lightweight mechanism for
+documenting a set of files and their fixities in a manifest, and associating
+them with some generic metadata.
+
+Work on an a REST API for Bags grew out of conversations started by the
+`MetaArchive <http://www.metaarchive.org/>`_ in late 2010. Before diving into
+the basic design, a few use cases to describe the problem space will be
+described.
+
 Use Cases
 ---------
 
-TODO: fleshing out use cases is crucial to moving forward with this work.
-    Otherwise, what are we designing towards?  Is it clear we're all working
-    towards the same goals?  etc.
+National Digital Newspaper Program
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`NDNP <http://www.loc.gov/ndnp/>`_ is an NEH funded project to digitize the 
+microfilm of historic American newspapers around the United States. 
+Digitization happens around the country at 23 institutions according to 
+specific imaging and metadata 
+`specifications <http://www.loc.gov/ndnp/techspecs.html>`_, afterwhich the data
+is bundled up on hard drives and shipped to the Library of Congress (LC). Each
+"batch" of content is bagged on receipt and then loaded into 
+`Chronicling America <http://chroniclingamerica.loc.gov/>`_, a public facing 
+web application for researcher access, and where it is also made available in 
+`bulk <http://chroniclingamerica.loc.gov/data/>`_.
+
+The reason for making the bags of newspaper content available in bulk has been 
+two-fold:
+
+* To support projects like 
+  `Digging into Data Challenge <http://www.diggingintodata.org/>`_ by
+  providing bulk access to the data for local computation. LC wants to enable 
+  others to repurpose the content in ways that are unanticipated by the NDNP 
+  project.
+
+* To enable digital preservation by making it possible for partner 
+  institutions and other interested parties to mirror the content for 
+  their own purposes, hoping that lots of copies will keep stuff a bit safer.
+
+While this approach of simply mounting the bags on the Web has allowed
+simple retrieval of content with web harvesting tools like 
+`wget <http://www.metaarchive.org/>`_, there is a perceived need to support:
+
+* Discovery of what bagged content is available for harvesting and where
+  to harvest it from (preferably a URL). Both the complete set of bags, as 
+  well a mechanism for discovering when new bags are available needs to 
+  be supported. 
+
+* An update mechanism for NDNP Awardees and other parties to let LC know
+  when a particular set of content has been successfully harvested and
+  what URL it is available from. It would be essential that LC be able 
+  to then use that URL to see if the content was in fact there, on an 
+  ongoing basis.
+
+This last issue is very important to enable digital preservation scenarios 
+where the NDNP program would like to know when and where backup copies are 
+available if the inevitable happens, and content is lost.
 
 Design
 ------
@@ -33,9 +90,9 @@ Controversial Points
 
     :mjgiarlo:
         Adding versioning semantics adds complexity to the bag store service.
-        The question is whether it's worth it. Hard to address w/o use cases. My
-        hunch is that bags should be mutable with versioning enabled (using e.g.
-        git behind the scenes, like PSU is doing via GitPython with its
+        The question is whether it's worth it. Hard to address w/o use cases.
+        My hunch is that bags should be mutable with versioning enabled (using
+        e.g. git behind the scenes, like PSU is doing via GitPython with its
         "repository").
 
 * Implementations MUST support JSON representations of resources, MAY support
