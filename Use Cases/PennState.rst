@@ -26,7 +26,7 @@ purposes.  We see some benefit of tackling cross-institutional replication at
 the bag level, rather than at the file level, in case we should ever need to
 interoperate with one another's content.  Some of these less clear but
 nonetheless attractive services might be around discovery or publishing of bags,
-such as detailed in the NDNP use case.
+such as detailed in the `NDNP use case <NDNP.rst>`_.
 
 Thus, we're keenly interested in a low-barrier method of replicating bags to and
 from partners in a potential bag interop network.

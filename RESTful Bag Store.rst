@@ -5,22 +5,24 @@ Overview
 --------
 
 This document briefly describes an approach to making `BagIt
-<http://en.wikipedia.org/wiki/BagIt>`_ style containers of content available
-on the Web so that content can be easily discovered, retrieved and otherwise
-annotated. BagIt style directories, or Bags, are a lightweight mechanism for
-documenting a set of files and their fixities in a manifest, and associating
-them with some generic metadata.
+<http://en.wikipedia.org/wiki/BagIt>`_ style containers of content
+available on the Web so that content can be easily discovered,
+retrieved and otherwise annotated. BagIt style directories, or Bags,
+are a lightweight mechanism for documenting a set of files and their
+fixities in a manifest, and associating them with some generic
+metadata.
 
-Work on an a REST API for Bags grew out of conversations started by the
-`MetaArchive <http://www.metaarchive.org/>`_ in late 2010. Before diving into
-the basic design, a few use cases to describe the problem space will be
-described.
+Work on an a REST API for Bags grew out of conversations started by
+the `Educopia Institute <http://www.educopia.org/>`_ in
+late 2010. Before diving into the basic design, a few use cases to
+describe the problem space will be described.
 
 Use Cases
 ---------
 
 * `National Digital Newspaper Program <Use%20Cases/NDNP.rst>`_
 * `Chronopolis <Use%20Cases/Chronopolis.rst>`_
+* `Penn State <Use%20Cases/PennState.rst>`_
 
 Design
 ------
