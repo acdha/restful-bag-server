@@ -20,13 +20,14 @@ model will work for some of our data, the scale and size of our data
 may be more than the MetaArchive private LOCKSS network can reasonably
 handle.
 
-Previously we have discussed bilateral bag replication services with the
-University of North Texas, primarily for far-off-site disaster recovery
-purposes.  We see some benefit of tackling cross-institutional replication at
-the bag level, rather than at the file level, in case we should ever need to
-interoperate with one another's content.  Some of these less clear but
-nonetheless attractive services might be around discovery or publishing of bags,
-such as detailed in the `NDNP use case <NDNP.rst>`_.
+Previously we have discussed bilateral bag replication services with
+the University of North Texas, primarily for far-off-site disaster
+recovery purposes.  We see some benefit of tackling
+cross-institutional replication at the bag level, rather than at the
+file level, in case we should ever need to interoperate with one
+another's content.  Some of these less clear but nonetheless
+attractive services might be around discovery or publishing of bags by
+end-users on the open web, such as those detailed in the `NDNP use case <NDNP.rst>`_.
 
 Thus, we're keenly interested in a low-barrier method of replicating bags to and
-from partners in a potential bag interop network.
+from partners in a bag interop network.
