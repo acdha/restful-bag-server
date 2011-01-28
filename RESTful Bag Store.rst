@@ -104,7 +104,8 @@ following metadata:
             advisory content type
 
     :info:
-        Parsed dictionary from ``bag-info.txt``
+        Parsed values from ``bag-info.txt`` returned as a list of key-value
+        pairs
 
     :bagit:
         Parsed dictionary from ``bagit.txt``

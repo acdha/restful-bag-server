@@ -3,11 +3,11 @@
         "BagIt-Version": "0.96",
         "Tag-File-Character-Encoding": "UTF-8"
     },
-    "info": {
-        "Bagging-Date": "2011-01-14",
-        "Payload-Oxum": "BUG: CALCULATE ME",
-        "Source-Organization": "Library of Congress"
-    },
+    "info": [
+        ["Bagging-Date", "2011-01-14"],
+        ["Payload-Oxum", "BUG: CALCULATE ME"],
+        ["Source-Organization", "Library of Congress"]
+    ],
     "links": [
         {
             "href": "copies",
