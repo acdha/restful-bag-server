@@ -243,6 +243,10 @@ Proposal 2
 Good HTTP Citizenship
 ~~~~~~~~~~~~~~~~~~~~~
 
+A summary of relevant points from
+`HTTP 1.1 (RFC 2616) <http://www.w3.org/Protocols/rfc2616/rfc2616.html>`_ which
+are of particular value for archival and replication:
+
 * Servers *SHOULD* generate Cache-Control headers; clients *MUST* honor them
 * Servers *MAY* use HTTP redirects to direct clients to HTTP-accessible
   backend storage for performance reasons
@@ -251,8 +255,12 @@ Good HTTP Citizenship
   these values if present
 * Servers *SHOULD* support entity tags and ``If-None-Match``
 * Servers *SHOULD* support HTTP Range to allow clients to resume transfers
-* Clients *SHOULD* honor HTTP 500.13 Server Busy responses using exponential
-  back-off
+* Servers *MAY* provide ``Retry-After`` with HTTP 503 (Service Unavailable)
+  to help clients, particularly when the delay is due to content being staged
+  from slower archive storage with known latency characteristics
+* Clients *MUST* honor HTTP 503 Service Unavailable responses using a provided
+  ``Retry-After`` header or using exponential back-off if ``Retry-After`` is not
+  provided.
 
 Operations
 ~~~~~~~~~~
