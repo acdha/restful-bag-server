@@ -14,12 +14,6 @@ providing lightweight curation services.  Objects ingested into this application
 will be stored as bags on disk, so we expect to accumulate a sizable number of
 bags in the coming years.
 
-Penn State is a member of the MetaArchive Cooperative and has looked
-at the functionality provided by its LOCKSS-based network.  While that
-model will work for some of our data, the scale and size of our data
-may be more than the MetaArchive private LOCKSS network can reasonably
-handle.
-
 Previously we have discussed bilateral bag replication services with
 the University of North Texas, primarily for far-off-site disaster
 recovery purposes.  We see some benefit of tackling
