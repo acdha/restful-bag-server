@@ -275,8 +275,9 @@ authenticate or lacks permissions to make changes.
 Creating a new bag
 ^^^^^^^^^^^^^^^^^^
 
-    #. Create the container:
-        Client POSTs to ``/bags`` with the ID
+        #. Create the container:
+            Client POSTs to ``/bags``:
+                :id: unique bag identifier
 
         Server returns 201 pointing to the new bag's location
 
