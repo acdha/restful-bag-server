@@ -1,0 +1,25 @@
+{
+    "payload": [
+        {
+            "checksum": {
+                "md5": "6261e6365902696605570bb44bd1db8f",
+                "sha1": "79ca8dbb8357afdbc6c0bf2cfa67e87a5a81c8ba"
+            },
+            "path": "data/lorem.txt"
+        }
+    ],
+    "tag": [
+        {
+            "path": "bagit.txt"
+        },
+        {
+            "path": "bag-info.txt"
+        },
+        {
+            "path": "manifest-md5.txt"
+        },
+        {
+            "path": "manifest-sha1.txt"
+        }
+    ]
+}

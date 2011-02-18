@@ -15,7 +15,7 @@
             "type": "application/json"
         },
         {
-            "href": "manifest",
+            "href": "version",
             "rel": "index",
             "type": "application/json"
         },
