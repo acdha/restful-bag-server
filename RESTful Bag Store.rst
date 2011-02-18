@@ -38,8 +38,11 @@ Basic Features
 --------------
 
 * Pure HTTP
-* Does not address authentication beyond standard HTTP
-* Does not require an intelligent server (Apache 1.0 could work)
+* Authentication and access control are considered a server implementation
+  issue using standard HTTP techniques
+* Does not require an intelligent server, with a goal of allowing simple
+  static servers or cloud services like S3 to be used as compatible, read-only
+  implementations
 
 Controversial Points
 --------------------
