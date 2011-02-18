@@ -2,8 +2,8 @@
     "payload": [
         {
             "checksum": {
-                "md5": "6261e6365902696605570bb44bd1db8f",
-                "sha1": "79ca8dbb8357afdbc6c0bf2cfa67e87a5a81c8ba"
+                "md5": "f5c85408e67ef9a90f3e416863ba84de",
+                "sha1": "b739cc59f5a89f502776e09b07f91d3f11657cc2"
             },
             "path": "data/lorem.txt"
         }
