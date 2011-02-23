@@ -30,10 +30,6 @@ Design
 This describes the public interface of an endpoint, which could be an entire
 service or a project-specific subdirectory on generic content storage system.
 
-The structure intentionally does not require any server support for the common
-case of providing access to bag contents, allowing a read-only store to be as
-simple as a correctly-structured webroot directory on a standard web server.
-
 Basic Features
 --------------
 
