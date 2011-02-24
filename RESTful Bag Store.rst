@@ -279,18 +279,26 @@ Creating a new bag
 
         Servers *MUST* return 409 Conflict if the ID is already in use
 
-    #. Client PUTs ``bagit.txt`` and ``bag-info.txt``
+    #. Client PUTs ``bagit.txt`` and ``bag-info.txt`` under ``contents``
 
     #. Client PUTs one or more manifest files under ``/contents/``
+
+        Servers *MUST* return HTTP 400 if the client has not provided
+        ``bagit.txt`` or ``bag-info.txt``
 
         Clients *MUST* provide the manifest files before uploading data
 
     #. Client PUTs data files under ``contents/data/``
 
-        Servers *MUST* return HTTP 400 if the file is not listed in the
-        manifest or the received contents fail checksum validation
+        Servers *MUST* return HTTP 400 if the client has not provided at least
+        one manifest file or attempts to PUT a file which is not listed in the
+        manifest or fails checksum validation
 
     #. Client POSTs ``commit`` to the bag location
+
+        Servers *MUST* return HTTP 400 if all of the files which are specified
+        in the manifest have not been received
+
 
 Deleting a bag
 ^^^^^^^^^^^^^^
