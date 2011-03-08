@@ -192,7 +192,7 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
             :contents:
                 Root for access to bag contents: for any file path in the manifest,
-                ``/bags/`` <*BAG_ID*> ``/contents/`` <*BAG_ID*> will return the raw
+                ``/bags/`` <*BAG_ID*> ``/contents/`` <*PATH*> will return the raw
                 file.
 
     :metadata:
