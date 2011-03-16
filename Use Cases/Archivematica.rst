@@ -1,21 +1,24 @@
-About ARCHIVEMATICA 
+About Archivematica
 ===================
 Archivematica is an open-source digital preservation system that is still undergoing active design and development (http://archivematica.org). Release 0.7-alpha was made available February 18, 2011. Development is led by Artefactual Systems (http://artefactual.com) in collaboration with a number of archives and libraries.
 
 Archivematica's primary design principles are ISO-OAIS functional model compliance, digital curation micro-services, and UNIX pipeline (stdout/stderr). The primary function of Archivematica is to process Submission Information Packages (SIPs), apply media-type preservation plans and create high-quality, repository-independent Archival Information Packages (AIP) using METS, PREMIS and Bagit (http://archivematica.org/overview). Archivematica also uploads Dissemination Information Packages (DIP) containing descriptive metadata and web-ready access copies to an online access system (e.g. ICA-AtoM, Dspace, ContentDM, etc.). 
 
 
-ARCHIVEMATICA and Bagit
+Archivematica and Bagit
 =======================
 Archivematica is already using Bagit to package Archival Information Packages (AIP). We are now considering whether to standardize on using Bagit to package and transmit SIPs and DIPs as well. This diagram illustrates the SIP, AIP and DIP interfaces that we expect to be functional in the 0.8-beta release (scheduled for December 2011) http://archivematica.org/wiki/images/5/59/Archivematica-0.8-beta-architecture.png
 
 The Archivematica uses cases for a Bagit REST API assume:
+
 (a) SIPs, AIPs and DIPs are all Bags packaged in compliance with the Bagit specification
+
 (b) Archivematica implements the Bagit REST API
+
 (c) The archival storage, backup, and access components as well as any SIP posting systems/tools have a corresponding REST APIs (at the least the subset required for that particular use case)
 
 
-ARCHIVEMATICA RESTful Bagit API Use Cases
+Archivematica RESTful Bagit API Use Cases
 ==========================================
 
 (1) Archivematica responds to a POST SIP request from (a) Archivematica pre-ingest tools or (b) external system/service
