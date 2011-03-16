@@ -2,7 +2,7 @@ About Archivematica
 ===================
 Archivematica is an open-source digital preservation system that is still undergoing active design and development (http://archivematica.org). Release 0.7-alpha was made available February 18, 2011. Development is led by Artefactual Systems (http://artefactual.com) in collaboration with a number of archives and libraries.
 
-Archivematica's primary design principles are ISO-OAIS functional model compliance, digital curation micro-services, and UNIX pipeline (stdout/stderr). The primary function of Archivematica is to process Submission Information Packages (SIPs), apply media-type preservation plans and create high-quality, repository-independent Archival Information Packages (AIP) using METS, PREMIS and Bagit (http://archivematica.org/overview). Archivematica also uploads Dissemination Information Packages (DIP) containing descriptive metadata and web-ready access copies to an online access system (e.g. ICA-AtoM, Dspace, ContentDM, etc.). 
+Archivematica's primary design principles are ISO-OAIS functional model compliance, digital curation micro-services, and UNIX pipeline (stdout/stderr). The primary function of Archivematica is to process Submission Information Packages (SIPs), apply media-type preservation plans and create high-quality, repository-independent Archival Information Packages (AIPs) using METS, PREMIS and Bagit (http://archivematica.org/overview). Archivematica also uploads Dissemination Information Packages (DIPs) containing descriptive metadata and web-ready access copies to an online access system (e.g. ICA-AtoM, Dspace, ContentDM, etc.). 
 
 
 Archivematica and Bagit
