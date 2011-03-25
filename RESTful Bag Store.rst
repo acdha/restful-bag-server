@@ -23,6 +23,7 @@ Use Cases
 * `National Digital Newspaper Program <Use%20Cases/NDNP.rst>`_
 * `Chronopolis <Use%20Cases/Chronopolis.rst>`_
 * `Penn State <Use%20Cases/PennState.rst>`_
+* `Archivematica <Use%20Cases/Archivematica.rst>`_
 
 Design
 ------
