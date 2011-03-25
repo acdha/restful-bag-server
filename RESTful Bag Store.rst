@@ -336,3 +336,6 @@ Requesting Server Validation
            Human-readable summary message, which may only be available
            when the operation has completed
 
+       :manifest:
+           List of bag-relative path to the manifest(s) used to perform the
+           validation
