@@ -44,16 +44,6 @@ Basic Features
 Controversial Points
 --------------------
 
-* Bags are immutable - alternatively, do we create ``versions`` resource instead
-  of ``contents``?
-
-    :mjgiarlo:
-        Adding versioning semantics adds complexity to the bag store service.
-        The question is whether it's worth it. Hard to address w/o use cases.
-        My hunch is that bags should be mutable with versioning enabled (using
-        e.g. git behind the scenes, like PSU is doing via GitPython with its
-        "repository").
-
 * Implementations MUST support JSON representations of resources, MAY support
   XML and other formats
 
@@ -138,58 +128,73 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 
         TODO: Should this be history?
 
-    :manifest:
-        Resource enumerating bag contents. This is a dictionary with two keys:
+    :versions:
 
-        :tag:
-            List of tag files as defined in the BagIt specification section
-            1.3 (Terminology)
+        GET returns a list of version IDs::
 
-        :payload:
-            List of payload files as defined in the BagIt specification
-            section 1.3 (Terminology)
+            [
+                {
+                    "id": "<unique identifier>",
+                    "timestamp": "ISO 8601 representation",
+                    "name": "<optional symbolic name>"
+                },
+                …
+            ]
 
-        Each list contains dictionaries with the following structure:
+        Each version contains two resources:
 
-        :path:
-            The file's full path relative to the bag root, i.e. ``data/foobar.tiff``
+            :manifest:
+                Resource enumerating bag contents. This is a dictionary with two keys:
 
-        :checksum:
-            Dictionary of encoded checksum values using the algorithm as the
-            key. This is optional for tag files.
+                :tag:
+                    List of tag files as defined in the BagIt specification section
+                    1.3 (Terminology)
 
-        Example::
+                :payload:
+                    List of payload files as defined in the BagIt specification
+                    section 1.3 (Terminology)
 
-            {
-                "payload": [
+                Each list contains dictionaries with the following structure:
+
+                :path:
+                    The file's full path relative to the bag root, i.e. ``data/foobar.tiff``
+
+                :checksum:
+                    Dictionary of encoded checksum values using the algorithm as the
+                    key. This is optional for tag files.
+
+                Example::
+
                     {
-                        "checksum": {
-                            "md5": "00fcbdf37a87dced7b969386efe6e132",
-                            "sha1": "74a272487eb513f2fb3984f2a7028871fcfb069b"
-                        },
-                        "path": "data/path/to/example.pdf"
+                        "payload": [
+                            {
+                                "checksum": {
+                                    "md5": "00fcbdf37a87dced7b969386efe6e132",
+                                    "sha1": "74a272487eb513f2fb3984f2a7028871fcfb069b"
+                                },
+                                "path": "data/path/to/example.pdf"
+                            }
+                        ],
+                        "tag": [
+                            {
+                                "path": "bagit.txt"
+                            },
+                            {
+                                "path": "bag-info.txt"
+                            },
+                            {
+                                "path": "manifest-md5.txt"
+                            },
+                            {
+                                "path": "manifest-sha1.txt"
+                            }
+                        ]
                     }
-                ],
-                "tag": [
-                    {
-                        "path": "bagit.txt"
-                    },
-                    {
-                        "path": "bag-info.txt"
-                    },
-                    {
-                        "path": "manifest-md5.txt"
-                    },
-                    {
-                        "path": "manifest-sha1.txt"
-                    }
-                ]
-            }
 
-    :contents:
-        Root for access to bag contents: for any file path in the manifest,
-        ``/bags/`` <*BAG_ID*> ``/contents/`` <*BAG_ID*> will return the raw
-        file.
+            :contents:
+                Root for access to bag contents: for any file path in the manifest,
+                ``/bags/`` <*BAG_ID*> ``/contents/`` <*PATH*> will return the raw
+                file.
 
     :metadata:
         Arbitrary additional metadata files stored in Java-style reversed
@@ -213,32 +218,24 @@ Under ``/bags/`` <*BAG_ID*> ``/`` will be several resources:
 Versioning
 ~~~~~~~~~~
 
-This is a major point of discussion: simply allowing bag contents to change
-will substantially complicate the replication process and makes it challenging
-to determine whether your copy is the same as an arbitrary remote copy.
+The versioning semantics are designed to support the use of version control
+systems like Git or Mercurial as storage backends and to allow implementors to
+support efficient delta-based replication protocols beyond the scope of this
+specification.
 
-Proposal 1
+* All content within a version *MUST* be immutable but servers *MAY* remove
+  old versions as desired. This allows bag copies to be compared simply by
+  comparing the source URLs of valid bags.
 
-    Don't. Bags are changed by creating a copy with a new ID and, optionally,
-    publishing a link to your copy with explanatory metadata.
+  This promise of immutability applies only to to the bag contents, including
+  the top-level tag files, and includes any file addition or deletion within
+  the content directory.
+  Metadata files are not versioned to avoid local additions breaking
+  replication.
 
-Proposal 2
+* Arbitrary symbolic names may be provided but *MUST* redirect to the
+  appropriate hash value so clients can perform consistent equality checks.
 
-    Explicit versioning: the manifest and contents move under a new
-    version/_hash_/ structure, with convenience ``version/latest`` which is
-    either the only bag (on servers which promise immutability) or the latest
-    version as determined by the server.
-
-    Arbitrary symbolic names may be allowed but MUST redirect to the
-    appropriate hash value.
-
-    In either case, the server MUST ensure that any addition, modification or
-    deletion to the bag contents, including the top-level tag files, will
-    result in a new hash being calculated. Metadata files are not versioned
-    to avoid local additions breaking replication.
-
-    These semantics support the use of Git or Mercurial as storage backends
-    for frequently changing content.
 
 Good HTTP Citizenship
 ~~~~~~~~~~~~~~~~~~~~~
@@ -261,8 +258,14 @@ are of particular value for archival and replication:
 * Clients *MUST* honor HTTP 503 Service Unavailable responses using a provided
   ``Retry-After`` header or using exponential back-off if ``Retry-After`` is not
   provided.
+<<<<<<< HEAD
 * Servers *SHOULD* support HTTP Pipelining and Keep-Alives to avoid
   performance issues when transferring large numbers of small files
+=======
+* Servers *SHOULD* return HTTP 410 (Gone) for content which has been removed,
+  particularly in the case of old versions for bags which are still present.
+
+>>>>>>> versioned-example
 
 Operations
 ~~~~~~~~~~
@@ -275,11 +278,16 @@ Creating a new bag
 ^^^^^^^^^^^^^^^^^^
 
     #. Create the container:
-
         Client POSTs to ``/bags``:
             :id: unique bag identifier
 
-        Server returns 201 pointing to the new bag's location
+        Server returns 201 pointing to the upload location, which may be
+        the final destination e.g. ``/bags/:id:/versions/:version-id:/`` or
+        a temporary location, possibly pointing to a specific back-end storage
+        server.
+
+        Clients *MUST* perform all subsequent operations using the
+        server-provided location
 
         Servers *MUST* return 409 Conflict if the ID is already in use
 

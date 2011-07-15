@@ -1,0 +1,1 @@
+f5c85408e67ef9a90f3e416863ba84de  data/lorem.txt
