@@ -2,7 +2,7 @@ National Digital Newspaper Program
 ==================================
 
 `NDNP <http://www.loc.gov/ndnp/>`_ is an NEH funded project to digitize the
-microfilm of historic American newspapers around the United States.
+microfilm of historic American newspapers.
 Digitization happens around the country at 23 institutions according to
 specific imaging and metadata
 `specifications <http://www.loc.gov/ndnp/techspecs.html>`_, afterwhich the data
