@@ -296,13 +296,17 @@ Creating a new bag
         Servers *MUST* return HTTP 400 if the client has not provided
         ``bagit.txt`` or ``bag-info.txt``
 
-        Clients *MUST* provide the manifest files before uploading data
+        Clients *MUST* provide the manifest files before committing the bag but
+        are free to assemble the bag in any order
 
     #. Client PUTs data files under ``contents/data/``
 
         Servers *MUST* return HTTP 400 if the client has not provided at least
         one manifest file or attempts to PUT a file which is not listed in the
         manifest or fails checksum validation
+
+        Clients *MAY* use DELETE or PUT to remove or replace previously uploaded
+        files before committing the bag
 
     #. Client POSTs ``commit`` to the bag location
 
