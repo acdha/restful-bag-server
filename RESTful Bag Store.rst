@@ -276,6 +276,8 @@ Creating a new bag
     #. Create the container:
         Client POSTs to ``/bags``:
             :id: unique bag identifier
+            :version: optional client-suggested version, which the server may
+                      choose to use
 
         Server returns 201 pointing to the upload location, which may be
         the final destination e.g. ``/bags/:id:/versions/:version-id:/`` or
