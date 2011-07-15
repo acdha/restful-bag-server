@@ -258,14 +258,10 @@ are of particular value for archival and replication:
 * Clients *MUST* honor HTTP 503 Service Unavailable responses using a provided
   ``Retry-After`` header or using exponential back-off if ``Retry-After`` is not
   provided.
-<<<<<<< HEAD
 * Servers *SHOULD* support HTTP Pipelining and Keep-Alives to avoid
   performance issues when transferring large numbers of small files
-=======
 * Servers *SHOULD* return HTTP 410 (Gone) for content which has been removed,
   particularly in the case of old versions for bags which are still present.
-
->>>>>>> versioned-example
 
 Operations
 ~~~~~~~~~~
