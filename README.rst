@@ -12,3 +12,10 @@ To send a use case:
     2. Create a file in the `Use Cases` subdirectory and commit it
     3. Push your changes to Github
     4. Send me a pull request
+
+
+Implementations
+---------------
+
+* Java: https://github.com/msmorul/Restful-bag-server-implementation (Mike Smorul, UMD)
+* Ruby: https://github.com/hading/bagit-server-proto (Howard Ding, UIUC)
