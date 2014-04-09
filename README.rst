@@ -18,4 +18,4 @@ Implementations
 ---------------
 
 * Java: https://github.com/msmorul/Restful-bag-server-implementation (Mike Smorul, UMD)
-* Ruby: https://github.com/hading/bagit-server-proto (Howard Ding, UIUC)
+* Ruby: https://github.com/medusa-project/bagit-server (Howard Ding, UIUC)
